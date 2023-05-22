@@ -5,15 +5,14 @@ plugins {
 }
 
 group = 'com.kshyk'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0'
 
 java {
     toolchain {
-        version = JavaVersion.VERSION_19
+        languageVersion = JavaLanguageVersion.of(19)
         vendor = JvmVendorSpec.ADOPTIUM
     }
 }
-sourceCompatibility = '19'
 
 configurations {
     compileOnly {
