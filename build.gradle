@@ -1,7 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '3.0.6'
     id 'io.spring.dependency-management' version '1.1.0'
-    id 'java'
+    id 'java-library'
 }
 
 group = 'com.kshyk'
@@ -9,11 +9,11 @@ version = '0.0.1-SNAPSHOT'
 
 java {
     toolchain {
-        version = JavaVersion.VERSION_17
-        vendor = JvmVendorSpec.ADOPTOPENJDK
+        version = JavaVersion.VERSION_19
+        vendor = JvmVendorSpec.ADOPTIUM
     }
 }
-sourceCompatibility = '17'
+sourceCompatibility = '19'
 
 configurations {
     compileOnly {
