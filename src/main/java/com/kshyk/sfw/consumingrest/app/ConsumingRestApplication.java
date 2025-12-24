@@ -1,13 +1,12 @@
-package com.kshyk.sfw;
+package com.kshyk.sfw.consumingrest.app;
 
 import com.kshyk.sfw.consumingrest.Quote;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 
 @Slf4j
 @SpringBootApplication
@@ -17,14 +16,17 @@ public class ConsumingRestApplication {
     }
 
     @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+    public RestClient restClient(RestClient.Builder builder) {
         return builder.build();
     }
 
     @Bean
-    public CommandLineRunner run(RestTemplate restTemplate) {
+    public CommandLineRunner run(RestClient restClient) {
         return args -> {
-            var quote = restTemplate.getForObject("https://quoters.apps.pcfone.io/api/random", Quote.class);
+            var quote = restClient.get()
+                    .uri("https://quoters.apps.pcfone.io/api/random")
+                    .retrieve()
+                    .body(Quote.class);
             log.info(quote.toString());
         };
     }
