@@ -14,6 +14,10 @@ java {
     }
 }
 
+springBoot {
+    mainClass = 'com.kshyk.sfw.SfwApplication'
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
