@@ -40,7 +40,7 @@ jobs:
         cache: 'gradle'
 
     - name: Gradle compile
-      run: ./gradlew --no-daemon clean compileJava compileTestJava
+      run: ./gradlew --no-daemon --refresh-dependencies clean compileJava compileTestJava
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v4
